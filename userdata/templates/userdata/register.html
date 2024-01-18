@@ -1,0 +1,28 @@
+{% extends 'index.html' %}
+{% block content %}
+{% load static %}
+<div class="container-fluid min-vh-100 d-flex align-items-center justify-content-center p-4">
+    <div class="row d-flex align-items-center justify-content-center">
+        <div class="col-lg-6 col-md-8 col-12">
+            <img src="{% static 'images/prayatna.png' %}" class="img-fluid" alt="Prayatna">
+        </div>
+        <div class="col-lg-6 col-md-8 col-12">
+            <div class="card">
+                <div class="card-body p-4">
+                    <form action="{% url 'userdata:register' %}" method="post">
+                        {% csrf_token %}
+                        <h2>Welcome!</h2>
+                        {{form.as_p}}
+                        <p>
+                            <label for="id_confirm_password">Confirm Password:</label>
+                            <input type="password" name="confirm_password" class="form-control" maxlength="100" required="" id="id_confirm_password">
+                        </p>
+                        <input type="submit" value="Register" class="btn btn-primary w-100">
+                    </form>
+                    <p class="mt-2">Already registered! <a class="text-decoration-none" href="{% url 'userdata:login' %}">Login</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
